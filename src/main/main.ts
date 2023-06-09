@@ -23,11 +23,7 @@ import setPreferenceFieldValue from './eventHandlers/setPreferenceFieldValue'
 import getPreferenceFieldValue from './eventHandlers/getPreferenceFieldValue'
 
 import CurrentDownloadItems from './utils/currentDownloadItems'
-import downloadStates from '../app/constants/downloadStates'
-
-// const { downloads } = require('../../test-download-files.json')
-// const { downloads } = require('../../test-download-files-one-collection.json')
-const { downloads } = require('../../test-download-files-one-file.json')
+import windowStateKeeper from './utils/windowStateKeeper'
 
 import EddDatabase from './utils/database/EddDatabase'
 
