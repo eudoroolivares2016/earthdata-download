@@ -19,9 +19,15 @@ import pauseDownloadItem from './eventHandlers/pauseDownloadItem'
 import reportProgress from './eventHandlers/reportProgress'
 import resumeDownloadItem from './eventHandlers/resumeDownloadItem'
 import willDownload from './eventHandlers/willDownload'
+import setPreferenceFieldValue from './eventHandlers/setPreferenceFieldValue'
+import getPreferenceFieldValue from './eventHandlers/getPreferenceFieldValue'
 
 import CurrentDownloadItems from './utils/currentDownloadItems'
-import windowStateKeeper from './utils/windowStateKeeper'
+import downloadStates from '../app/constants/downloadStates'
+
+// const { downloads } = require('../../test-download-files.json')
+// const { downloads } = require('../../test-download-files-one-collection.json')
+const { downloads } = require('../../test-download-files-one-file.json')
 
 import EddDatabase from './utils/database/EddDatabase'
 
@@ -126,6 +132,22 @@ const createWindow = async () => {
     await clearDefaultDownload({
       database
     })
+  })
+
+  ipcMain.on('setPreferenceFieldValue', (event, field, value) => {
+    setPreferenceFieldValue({
+      store,
+      field,
+      value
+    })
+  })
+
+  ipcMain.handle('getPreferenceFieldValue', (event, field) => {
+    const value = getPreferenceFieldValue({
+      store,
+      field
+    })
+    return value
   })
 
   appWindow.webContents.once('did-finish-load', () => {
