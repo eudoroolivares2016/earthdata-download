@@ -8,7 +8,6 @@ contextBridge.exposeInMainWorld('electronApi', {
   // Messages to send to the main process
   beginDownload: (data) => ipcRenderer.send('beginDownload', data),
   chooseDownloadLocation: () => ipcRenderer.send('chooseDownloadLocation'),
-  // clearDefaultDownload: () => ipcRenderer.send('clearDefaultDownload'),
   setPreferenceFieldValue: (field, value) => ipcRenderer.send('setPreferenceFieldValue', field, value),
   getPreferenceFieldValue: (field) => ipcRenderer.invoke('getPreferenceFieldValue', field),
 

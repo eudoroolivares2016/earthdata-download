@@ -11,7 +11,6 @@ import path from 'path'
 import beginDownload from './eventHandlers/beginDownload'
 import cancelDownloadItem from './eventHandlers/cancelDownloadItem'
 import chooseDownloadLocation from './eventHandlers/chooseDownloadLocation'
-// import clearDefaultDownload from './eventHandlers/clearDefaultDownload'
 import copyDownloadPath from './eventHandlers/copyDownloadPath'
 import openDownloadFolder from './eventHandlers/openDownloadFolder'
 import openUrl from './eventHandlers/openUrl'
@@ -123,12 +122,6 @@ const createWindow = async () => {
       webContents: appWindow.webContents
     })
   })
-
-  // ipcMain.on('clearDefaultDownload', async () => {
-  //   await clearDefaultDownload({
-  //     database
-  //   })
-  // })
 
   ipcMain.on('setPreferenceFieldValue', (event, field, value) => {
     setPreferenceFieldValue({
