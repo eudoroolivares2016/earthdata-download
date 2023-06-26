@@ -123,16 +123,16 @@ const createWindow = async () => {
     })
   })
 
-  ipcMain.on('setPreferenceFieldValue', (event, field, value) => {
-    setPreferenceFieldValue({
+  ipcMain.on('setPreferenceFieldValue', async (event, field, value) => {
+    await setPreferenceFieldValue({
       database,
       field,
       value
     })
   })
 
-  ipcMain.handle('getPreferenceFieldValue', (event, field) => {
-    const value = getPreferenceFieldValue({
+  ipcMain.handle('getPreferenceFieldValue', async (event, field) => {
+    const value = await getPreferenceFieldValue({
       database,
       field
     })
